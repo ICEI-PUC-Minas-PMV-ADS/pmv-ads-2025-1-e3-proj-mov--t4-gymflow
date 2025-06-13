@@ -12,8 +12,8 @@ using puc_projeto_eixo_2.Models;
 namespace puc_projeto_eixo_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250613183046_criação-usuario")]
-    partial class criaçãousuario
+    [Migration("20250613203355_login-create-finalizado")]
+    partial class logincreatefinalizado
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace puc_projeto_eixo_2.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("puc_projeto.Models.Usuario", b =>
+            modelBuilder.Entity("puc_projeto_eixo_2.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,7 +71,7 @@ namespace puc_projeto_eixo_2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Table-Usuario");
+                    b.ToTable("Table_Usuario");
                 });
 #pragma warning restore 612, 618
         }

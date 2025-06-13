@@ -22,7 +22,7 @@ namespace puc_projeto_eixo_2.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("puc_projeto.Models.Usuario", b =>
+            modelBuilder.Entity("puc_projeto_eixo_2.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -68,7 +68,7 @@ namespace puc_projeto_eixo_2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Table-Usuario");
+                    b.ToTable("Table_Usuario");
                 });
 #pragma warning restore 612, 618
         }

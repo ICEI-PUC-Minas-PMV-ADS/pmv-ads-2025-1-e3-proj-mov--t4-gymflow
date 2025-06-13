@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace puc_projeto_eixo_2.Migrations
 {
     /// <inheritdoc />
-    public partial class criaçãousuario : Migration
+    public partial class logincreatefinalizado : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Table-Usuario",
+                name: "Table_Usuario",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -30,7 +30,7 @@ namespace puc_projeto_eixo_2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Table-Usuario", x => x.Id);
+                    table.PrimaryKey("PK_Table_Usuario", x => x.Id);
                 });
         }
 
@@ -38,7 +38,7 @@ namespace puc_projeto_eixo_2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Table-Usuario");
+                name: "Table_Usuario");
         }
     }
 }

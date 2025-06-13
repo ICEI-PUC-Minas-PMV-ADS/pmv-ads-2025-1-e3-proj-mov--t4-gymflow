@@ -5,7 +5,7 @@
 namespace puc_projeto_eixo_2.Migrations
 {
     /// <inheritdoc />
-    public partial class usuarioUpdate : Migration
+    public partial class bdconectadofrontendOK : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
