@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using puc_projeto.Models;
+using puc_projeto_eixo_2.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

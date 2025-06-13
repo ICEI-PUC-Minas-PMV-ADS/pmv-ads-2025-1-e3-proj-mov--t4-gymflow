@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace puc_projeto.Models
+namespace puc_projeto_eixo_2.Models
 {
     public class AppDbContext : DbContext
     {

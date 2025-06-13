@@ -1,5 +1,7 @@
+
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using puc_projeto_eixo_2.Models;
 
 namespace puc_projeto_eixo_2.Controllers
@@ -18,15 +20,21 @@ namespace puc_projeto_eixo_2.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            var errorModel = new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+
+            return View(errorModel);
+        }
+
+        public IActionResult TesteMensagem()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

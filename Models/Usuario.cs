@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace puc_projeto.Models
+namespace puc_projeto_eixo_2.Models
 {
-    [Table("Table-Usuario")]
+    [Table("Table_Usuario")]
     public class Usuario
     {
         [Key]
