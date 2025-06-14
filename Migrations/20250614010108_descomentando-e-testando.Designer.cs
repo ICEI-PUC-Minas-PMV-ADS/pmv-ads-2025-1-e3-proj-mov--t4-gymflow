@@ -12,8 +12,8 @@ using puc_projeto_eixo_2.Models;
 namespace puc_projeto_eixo_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250613212952_create-treino")]
-    partial class createtreino
+    [Migration("20250614010108_descomentando-e-testando")]
+    partial class descomentandoetestando
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,7 +85,8 @@ namespace puc_projeto_eixo_2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Avaliacao")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(2, 1)
+                        .HasColumnType("decimal(2,1)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -175,7 +176,7 @@ namespace puc_projeto_eixo_2.Migrations
             modelBuilder.Entity("puc_projeto_eixo_2.Models.Treino", b =>
                 {
                     b.HasOne("puc_projeto_eixo_2.Models.Usuario", "Usuario")
-                        .WithMany("Treinos")
+                        .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -188,11 +189,6 @@ namespace puc_projeto_eixo_2.Migrations
                     b.Navigation("Comentarios");
 
                     b.Navigation("Exercicios");
-                });
-
-            modelBuilder.Entity("puc_projeto_eixo_2.Models.Usuario", b =>
-                {
-                    b.Navigation("Treinos");
                 });
 #pragma warning restore 612, 618
         }

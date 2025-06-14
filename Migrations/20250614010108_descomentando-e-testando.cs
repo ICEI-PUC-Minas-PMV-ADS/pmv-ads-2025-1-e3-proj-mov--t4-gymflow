@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace puc_projeto_eixo_2.Migrations
 {
     /// <inheritdoc />
-    public partial class createtreino : Migration
+    public partial class descomentandoetestando : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,7 @@ namespace puc_projeto_eixo_2.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Avaliacao = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Avaliacao = table.Column<decimal>(type: "decimal(2,1)", precision: 2, scale: 1, nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

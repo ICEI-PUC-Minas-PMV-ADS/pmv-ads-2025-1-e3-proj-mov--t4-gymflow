@@ -12,8 +12,8 @@ using puc_projeto_eixo_2.Models;
 namespace puc_projeto_eixo_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250613203703_bd-conectado-front-end-OK")]
-    partial class bdconectadofrontendOK
+    [Migration("20250614005534_testte-descomentando")]
+    partial class testtedescomentando
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

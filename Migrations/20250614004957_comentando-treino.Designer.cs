@@ -12,8 +12,8 @@ using puc_projeto_eixo_2.Models;
 namespace puc_projeto_eixo_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250613203355_login-create-finalizado")]
-    partial class logincreatefinalizado
+    [Migration("20250614004957_comentando-treino")]
+    partial class comentandotreino
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

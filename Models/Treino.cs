@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace puc_projeto_eixo_2.Models
@@ -17,6 +18,7 @@ namespace puc_projeto_eixo_2.Models
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
+        [Precision(2, 1)]
         [Display(Name = "Avaliação")]
         [Range(0, 5)]
         public decimal Avaliacao { get; set; }

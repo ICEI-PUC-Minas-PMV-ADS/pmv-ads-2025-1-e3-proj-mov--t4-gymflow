@@ -21,8 +21,8 @@ namespace puc_projeto_eixo_2.Controllers
         // GET: Treinos
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Treino.Include(t => t.Usuario);
-            return View(await appDbContext.ToListAsync());
+            var AppDbContext = _context.Treino.Include(t => t.Usuario);
+            return View(await AppDbContext.ToListAsync());
         }
 
         // GET: Treinos/Details/5
@@ -52,8 +52,6 @@ namespace puc_projeto_eixo_2.Controllers
         }
 
         // POST: Treinos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,Avaliacao,UsuarioId")] Treino treino)
@@ -86,8 +84,6 @@ namespace puc_projeto_eixo_2.Controllers
         }
 
         // POST: Treinos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descricao,Avaliacao,UsuarioId")] Treino treino)

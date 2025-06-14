@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace puc_projeto_eixo_2.Migrations
 {
     /// <inheritdoc />
-    public partial class logincreatefinalizado : Migration
+    public partial class comentandotreino : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

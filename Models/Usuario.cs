@@ -45,7 +45,7 @@ namespace puc_projeto_eixo_2.Models
 
         public Perfil Perfil { get; set; }
 
-        public ICollection<Treino> Treinos { get; set; }
+        //public ICollection<Treino> Treinos { get; set; }
     }
 
     public enum Genero
