@@ -18,10 +18,9 @@ namespace puc_projeto_eixo_2.Models
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        [Precision(2, 1)]
         [Display(Name = "Avaliação")]
-        [Range(0, 5)]
-        public decimal Avaliacao { get; set; }
+        [Range(0, 5, ErrorMessage = "A avaliação deve ser um número entre 0 e 5.")]
+        public int Avaliacao { get; set; }
 
         public List<ExercicioModel> Exercicios { get; set; } = new List<ExercicioModel>();
 
@@ -40,6 +39,8 @@ namespace puc_projeto_eixo_2.Models
         [Key]
         public int Id { get; set; }
         public string Nome { get; set; }
+
+        [ForeignKey("TreinoId")]
         public int TreinoId { get; set; }
     }
 
@@ -50,6 +51,8 @@ namespace puc_projeto_eixo_2.Models
         public string Texto { get; set; }
         public DateTime DataCriacao { get; set; }
         public string Usuario { get; set; }
+
+        [ForeignKey("TreinoId")]
         public int TreinoId { get; set; }
     }
 }

@@ -95,7 +95,7 @@ namespace puc_projeto_eixo_2.Controllers
 
                 TempData["MensagemLogin"] = $"Bem-vindo, {usuario.Nome}!";
 
-                return RedirectToAction("Create", "Home");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(usuario);

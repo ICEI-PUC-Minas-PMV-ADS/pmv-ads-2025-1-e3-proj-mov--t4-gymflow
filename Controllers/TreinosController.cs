@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using puc_projeto_eixo_2.Models;
 
 namespace puc_projeto_eixo_2.Controllers
 {
+    [Authorize] // Garante que apenas usuários logados possam acessar estas actions
     public class TreinosController : Controller
     {
         private readonly AppDbContext _context;
@@ -47,22 +50,43 @@ namespace puc_projeto_eixo_2.Controllers
         // GET: Treinos/Create
         public IActionResult Create()
         {
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Cidade");
+            // Removemos a linha que envia a lista de usuários para a view.
             return View();
         }
 
         // POST: Treinos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,Avaliacao,UsuarioId")] Treino treino)
+        public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,Avaliacao")] Treino treino)
         {
+            // Obtém o e-mail do usuário logado a partir do Claim
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                ModelState.AddModelError(string.Empty, "Não foi possível identificar o usuário logado.");
+                return View(treino);
+            }
+
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == userEmail);
+
+            if (usuario == null)
+            {
+                ModelState.AddModelError(string.Empty, "Usuário não encontrado.");
+                return View(treino);
+            }
+
+            // Associa o ID do usuário logado ao treino
+            treino.UsuarioId = usuario.Id;
+
             if (ModelState.IsValid)
             {
                 _context.Add(treino);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Cidade", treino.UsuarioId);
+            
+            // Se o modelo for inválido, retorna para a view sem a necessidade de recarregar a lista de usuários
             return View(treino);
         }
 
@@ -79,6 +103,8 @@ namespace puc_projeto_eixo_2.Controllers
             {
                 return NotFound();
             }
+            // Mantemos isso caso um admin precise editar e trocar o usuário.
+            // Se apenas o próprio usuário pode editar, esta lógica também deve ser alterada.
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Cidade", treino.UsuarioId);
             return View(treino);
         }
