@@ -18,7 +18,7 @@ namespace puc_projeto_eixo_2.Models
         [Required(ErrorMessage = "O e-mail é obrigatório.")]
         public string Email { get; set; }
 
-        public string Telefone { get; set; }
+        public string? Telefone { get; set; }
 
         [Required(ErrorMessage = "O gênero é obrigatório.")]
         public Genero Genero { get; set; }
@@ -45,7 +45,11 @@ namespace puc_projeto_eixo_2.Models
 
         public Perfil Perfil { get; set; }
 
-        //public ICollection<Treino> Treinos { get; set; }
+        // Novo campo para foto de perfil
+        public string? FotoPerfil { get; set; }
+
+        // Propriedade de navegação para treinos criados pelo usuário
+        public virtual ICollection<Treino> Treinos { get; set; } = new List<Treino>();
     }
 
     public enum Genero
