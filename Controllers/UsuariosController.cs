@@ -8,7 +8,6 @@ using puc_projeto_eixo_2.Models;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-
 namespace puc_projeto_eixo_2.Controllers
 {
     public class UsuariosController : Controller
@@ -189,8 +188,6 @@ namespace puc_projeto_eixo_2.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
-
         // ===========================================  L O G I N  =============================================================================================
 
         public IActionResult Login()
@@ -229,7 +226,6 @@ namespace puc_projeto_eixo_2.Controllers
             return RedirectToAction("TesteMensagem", "Home");
         }
 
-
         // ===========================================  L O G O U T  =============================================================================================
 
         [HttpGet]
@@ -242,6 +238,146 @@ namespace puc_projeto_eixo_2.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        // ===========================================  M É T O D O S   D E   T E S T E  =============================================================================================
+
+        // MÉTODO TEMPORÁRIO - Criar usuário de teste para desenvolvimento
+        [HttpGet]
+        public async Task<IActionResult> CriarUsuarioTeste()
+        {
+            try
+            {
+                // Verifica se já existe um usuário com este email
+                if (await _context.Usuarios.AnyAsync(u => u.Email == "teste@teste.com"))
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Usuário já existe",
+                        email = "teste@teste.com",
+                        senha = "123456",
+                        loginUrl = "/Usuarios/Login"
+                    });
+                }
+
+                // Cria o usuário de teste
+                var usuario = new Usuario
+                {
+                    Nome = "João Silva",
+                    NomeDeUsuario = "joao123",
+                    Email = "teste@teste.com",
+                    Telefone = "11999999999",
+                    Genero = Genero.Masculino,
+                    Estado = Estado.SãoPaulo,
+                    Cidade = "São Paulo",
+                    Nascimento = new DateTime(1990, 1, 1),
+                    Senha = BCrypt.Net.BCrypt.HashPassword("123456"), // Senha será "123456"
+                    Perfil = Perfil.User
+                };
+
+                _context.Usuarios.Add(usuario);
+                await _context.SaveChangesAsync();
+
+                return Json(new
+                {
+                    success = true,
+                    message = "Usuário criado com sucesso!",
+                    email = "teste@teste.com",
+                    senha = "123456",
+                    loginUrl = "/Usuarios/Login",
+                    perfilUrl = "/Perfil"
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Erro ao criar usuário: " + ex.Message
+                });
+            }
+        }
+
+        // MÉTODO TEMPORÁRIO - Criar vários usuários de teste
+        [HttpGet]
+        public async Task<IActionResult> CriarUsuariosTeste()
+        {
+            try
+            {
+                var usuarios = new List<Usuario>
+                {
+                    new Usuario
+                    {
+                        Nome = "João Silva",
+                        NomeDeUsuario = "joao123",
+                        Email = "joao@teste.com",
+                        Telefone = "11999999999",
+                        Genero = Genero.Masculino,
+                        Estado = Estado.SãoPaulo,
+                        Cidade = "São Paulo",
+                        Nascimento = new DateTime(1990, 1, 1),
+                        Senha = BCrypt.Net.BCrypt.HashPassword("123456"),
+                        Perfil = Perfil.User
+                    },
+                    new Usuario
+                    {
+                        Nome = "Maria Santos",
+                        NomeDeUsuario = "maria456",
+                        Email = "maria@teste.com",
+                        Telefone = "11888888888",
+                        Genero = Genero.Feminino,
+                        Estado = Estado.RiodeJaneiro,
+                        Cidade = "Rio de Janeiro",
+                        Nascimento = new DateTime(1995, 5, 15),
+                        Senha = BCrypt.Net.BCrypt.HashPassword("123456"),
+                        Perfil = Perfil.User
+                    },
+                    new Usuario
+                    {
+                        Nome = "Admin Teste",
+                        NomeDeUsuario = "admin",
+                        Email = "admin@teste.com",
+                        Telefone = "11777777777",
+                        Genero = Genero.Masculino,
+                        Estado = Estado.SãoPaulo,
+                        Cidade = "São Paulo",
+                        Nascimento = new DateTime(1985, 3, 10),
+                        Senha = BCrypt.Net.BCrypt.HashPassword("admin123"),
+                        Perfil = Perfil.Admin
+                    }
+                };
+
+                foreach (var usuario in usuarios)
+                {
+                    if (!await _context.Usuarios.AnyAsync(u => u.Email == usuario.Email))
+                    {
+                        _context.Usuarios.Add(usuario);
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Json(new
+                {
+                    success = true,
+                    message = "Usuários de teste criados com sucesso!",
+                    usuarios = new[]
+                    {
+                        new { email = "joao@teste.com", senha = "123456", tipo = "User" },
+                        new { email = "maria@teste.com", senha = "123456", tipo = "User" },
+                        new { email = "admin@teste.com", senha = "admin123", tipo = "Admin" }
+                    },
+                    loginUrl = "/Usuarios/Login"
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Erro ao criar usuários: " + ex.Message
+                });
+            }
+        }
     }
 }
-
