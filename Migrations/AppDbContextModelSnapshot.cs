@@ -81,9 +81,8 @@ namespace puc_projeto_eixo_2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Avaliacao")
-                        .HasPrecision(2, 1)
-                        .HasColumnType("decimal(2,1)");
+                    b.Property<int>("Avaliacao")
+                        .HasColumnType("int");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -122,6 +121,9 @@ namespace puc_projeto_eixo_2.Migrations
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
+                    b.Property<string>("FotoPerfil")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Genero")
                         .HasColumnType("int");
 
@@ -144,7 +146,6 @@ namespace puc_projeto_eixo_2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -173,7 +174,7 @@ namespace puc_projeto_eixo_2.Migrations
             modelBuilder.Entity("puc_projeto_eixo_2.Models.Treino", b =>
                 {
                     b.HasOne("puc_projeto_eixo_2.Models.Usuario", "Usuario")
-                        .WithMany()
+                        .WithMany("Treinos")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -186,6 +187,11 @@ namespace puc_projeto_eixo_2.Migrations
                     b.Navigation("Comentarios");
 
                     b.Navigation("Exercicios");
+                });
+
+            modelBuilder.Entity("puc_projeto_eixo_2.Models.Usuario", b =>
+                {
+                    b.Navigation("Treinos");
                 });
 #pragma warning restore 612, 618
         }
