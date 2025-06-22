@@ -69,34 +69,77 @@ namespace puc_projeto_eixo_2.Controllers
         }
 
         // Create - Método post, recebe os dados enviados por um formulário e salva um novo usuário no banco de dados
+
         [HttpPost]
         public async Task<IActionResult> Create(Usuario usuario)
         {
-            if (ModelState.IsValid) // Verifica se o modelo de dados é válido
+            try
             {
-                usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
-                _context.Usuarios.Add(usuario); // Se o modelo for válido, ou seja, estiver com todos os dados preenchidos corretamente, será adicionado na tabela de usuários.
+                if (!ModelState.IsValid)
+                {
+                    // Log de validação falhou
+                    Console.WriteLine($"Validação falhou para o usuário {usuario.Email}. Erros: {string.Join(", ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage))}");
+                    return View(usuario);
+                }
 
+                // Verifica se email já existe
+                if (await _context.Usuarios.AnyAsync(u => u.Email == usuario.Email))
+                {
+                    ModelState.AddModelError("Email", "Este email já está cadastrado");
+                    Console.WriteLine($"Tentativa de cadastro com email existente: {usuario.Email}");
+                    return View(usuario);
+                }
+
+                // Verifica se nome de usuário já existe
+                if (await _context.Usuarios.AnyAsync(u => u.NomeDeUsuario == usuario.NomeDeUsuario))
+                {
+                    ModelState.AddModelError("NomeDeUsuario", "Este nome de usuário já está em uso");
+                    return View(usuario);
+                }
+
+                // Criptografa senha
+                usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
+
+                // Define perfil padrão
+                usuario.Perfil = Perfil.User;
+
+                _context.Usuarios.Add(usuario);
                 await _context.SaveChangesAsync();
 
-                // Autentica o usuário após o cadastro
+                // Log de sucesso
+                Console.WriteLine($"Novo usuário cadastrado: {usuario.Email}");
+
+                // Autenticação
                 var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Email, usuario.Email),
-                new Claim(ClaimTypes.Name, usuario.Nome)
-            };
+        {
+            new Claim(ClaimTypes.Email, usuario.Email),
+            new Claim(ClaimTypes.Name, usuario.Nome),
+            new Claim(ClaimTypes.Role, usuario.Perfil.ToString())
+        };
 
                 var identidade = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identidade);
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                //Console.WriteLine("Usuário autenticado com sucesso!");
 
-                TempData["MensagemLogin"] = $"Bem-vindo, {usuario.Nome}!";
+                TempData["MensagemSucesso"] = $"Bem-vindo, {usuario.Nome}! Seu cadastro foi realizado com sucesso.";
 
+                // Redireciona para página de boas-vindas ou dashboard
                 return RedirectToAction("Index", "Home");
             }
-
+            catch (DbUpdateException dbEx)
+            {
+                // Log específico para erros de banco de dados
+                Console.WriteLine($"Erro de banco de dados ao criar usuário: {dbEx.InnerException?.Message ?? dbEx.Message}");
+                ModelState.AddModelError("", "Erro ao salvar no banco de dados. Por favor, tente novamente.");
+            }
+            catch (Exception ex)
+            {
+                // Log genérico
+                Console.WriteLine($"Erro inesperado ao criar usuário: {ex.Message}");
+                ModelState.AddModelError("", "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.");
+            }
+            // Se chegou aqui, algo deu errado - mantém os dados preenchidos no formulário
             return View(usuario);
         }
 

@@ -4,24 +4,20 @@ using puc_projeto_eixo_2.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
-var connection = // builder.Configuration.GetConnectionString("DefaultConnection");
-                   builder.Services.AddDbContext<AppDbContext>(options =>
-                   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Usuarios/Login"; // Redireciona quando não autenticado
+        options.LoginPath = "/Usuarios/Login";
         options.LogoutPath = "/Usuarios/Logout";
     });
 
 var app = builder.Build();
-
-// Configure o HTTP request pipeline.
 
 if (!app.Environment.IsDevelopment())
 {
@@ -29,12 +25,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection();      
 app.UseStaticFiles();
 
 app.UseRouting();
 
-// Adiciona autenticação e autorização no pipeline
 app.UseAuthentication();
 app.UseAuthorization();
 
