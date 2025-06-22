@@ -111,11 +111,11 @@ namespace puc_projeto_eixo_2.Controllers
 
                 // Autenticação
                 var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Email, usuario.Email),
-            new Claim(ClaimTypes.Name, usuario.Nome),
-            new Claim(ClaimTypes.Role, usuario.Perfil.ToString())
-        };
+            {
+                new Claim(ClaimTypes.Email, usuario.Email),
+                new Claim(ClaimTypes.Name, usuario.Nome),
+                new Claim(ClaimTypes.Role, usuario.Perfil.ToString())
+            };
 
                 var identidade = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identidade);
