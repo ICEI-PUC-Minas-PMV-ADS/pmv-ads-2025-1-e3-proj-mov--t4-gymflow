@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar Treinos - GymFlow</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/global.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/explorar.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo-container">
+                    <a href="/index.html">
+                        <i class="fa-solid fa-dumbbell"></i>GymFlow
+                    </a>
+                </div>
+                <div class="botoes-nav">
+                    <a href="/add-workout.html" class="button-geral button-add-workout">Adicionar Treino</a>
+                    <a href="/profile.html" class="button-geral button-profile">Meu Perfil</a>
+                    <button id="logoutBtn" class="button-geral button-sair">Sair</button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="div-treinos-disponiveis">
+                <h2>Treinos Disponíveis</h2>
+                <div class="carousel-container">
+                    <button class="carousel-arrow arrow-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div id="workoutsTrack" class="carousel-track">
+                        <p class="loading-message">Carregando treinos...</p>
+                    </div>
+                    <button class="carousel-arrow arrow-next"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="workoutDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="fechar" onclick="fecharModal('workoutDetailsModal')">&times;</span>
+            <h2 id="modalWorkoutName">Nome do Treino</h2>
+            <img id="modalMainImage" src="" alt="Foto Principal do Treino">
+            <p id="modalWorkoutDescription" class="descricao-treino">Descrição detalhada do treino...</p>
+            <div id="modalAdditionalImages" class="modal-additional-images">
+            </div>
+            <a id="modalCreatorProfileLink" href="#" class="botao-ver-perfil">Ver Perfil do Criador</a>
+        </div>
+    </div>
+
+
+    <script src="/js/auth.js" asp-append-version="true"></script>
+    <script src="/js/explorar.js" asp-append-version="true"></script>
+</body>
+</html>
