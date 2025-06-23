@@ -19,7 +19,7 @@ Essa abordagem garante não apenas a validação técnica das funcionalidades, m
 |:---:	|:---:	|
 |	**Requisito Associado** 	| RF-001 - O sistema permite que os usuários se cadastrem na plataforma. |
 | **Objetivo do Teste** 	| Verificar se o usuário consegue se cadastrar na aplicação. |
-| **Passos** 	| - Acessar o navegador <br> - Informar o endereço do site https://www.aquiiremosadicionaraurlquandoforfeita.com.br<br> - Clicar em "Registrar-se" <br> - Preencher os campos obrigatórios (e-mail, nome, sobrenome, celular, CPF, senha, confirmação de senha) <br> - Aceitar os termos de uso <br> - Clicar em "Registrar" |
+| **Passos** 	| - Acessar o navegador <br> - Informar o endereço do site https://gymflow-webapp-2025-bwhqdsh7bkgrhpfz.canadacentral-01.azurewebsites.net/Home/Index<br> - Clicar em "Registrar-se" <br> - Preencher os campos obrigatórios (e-mail, nome, sobrenome, celular, CPF, senha, confirmação de senha) <br> - Aceitar os termos de uso <br> - Clicar em "Registrar" |
 | **Critério de Êxito** | - O cadastro foi realizado com sucesso. |
 | **Responsável** | `Jefferson Luiz M.` |
 
@@ -30,7 +30,7 @@ Essa abordagem garante não apenas a validação técnica das funcionalidades, m
 |:---:	|:---:	|
 | **Requisito Associado** | RF-002	- O sistema deve permitir que os usuários façam login na plataforma com e-mail e senha. |
 | **Objetivo do Teste** 	| Verificar se o usuário consegue realizar login. |
-| **Passos** 	| - Acessar o navegador <br> - Informar o endereço do site tps://www.aquiiremosadicionaraurlquandoforfeita.com.br<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" |
+| **Passos** 	| - Acessar o navegador <br> - Informar o endereço do site https://gymflow-webapp-2025-bwhqdsh7bkgrhpfz.canadacentral-01.azurewebsites.net/Home/Index<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" |
 | **Critério de Êxito** | - O login foi realizado com sucesso. |
 | **Responsável** | `Jefferson Luiz M.` |
 
@@ -39,7 +39,7 @@ Essa abordagem garante não apenas a validação técnica das funcionalidades, m
 | **Caso de Teste** 	| **CT03 – Criar treinos**|
 |:---:	|:---:	|
 | **Requisito Associado** | RF-003	- O sistema deve permitir que os usuários criem treinos.|
-| **Objetivo do Teste** 	| Acessar o navegador <br> - Informar o endereço do site tps://www.aquiiremosadicionaraurlquandoforfeita.com.br<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" . O usuário deve clicar em "Explorar" - O usuário deve clicar em "Criar treinos" - O usuário deve preencher os campos obrigatórios (Título do treino, exercício, sobre). |
+| **Objetivo do Teste** 	| Acessar o navegador <br> - Informar o endereço do site https://gymflow-webapp-2025-bwhqdsh7bkgrhpfz.canadacentral-01.azurewebsites.net/Home/Index<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" . O usuário deve clicar em "Explorar" - O usuário deve clicar em "Criar treinos" - O usuário deve preencher os campos obrigatórios (Título do treino, exercício, sobre). |
 | **Critério de Êxito** | - O treino foi criado com sucesso. |
 | **Responsável** | `Jefferson Luiz M.` |
 
@@ -48,7 +48,7 @@ Essa abordagem garante não apenas a validação técnica das funcionalidades, m
 | **Caso de Teste** 	| **CT04 – Compartilhar treinos**|
 |:---:	|:---:	|
 | **Requisito Associado** | RF-003	- O sistema deve permitir que os usuários compartilhem treinos.|
-| **Objetivo do Teste** 	| Acessar o navegador <br> - Informar o endereço do site tps://www.aquiiremosadicionaraurlquandoforfeita.com.br<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" . O usuário deve clicar em "Meus treinos" -  O usuário deve clicar em "Compartilhar" - O usuário deve escolher o usuário para ser compartilhado e selecionar - O usuário deve clicar em "Enviar".|
+| **Objetivo do Teste** 	| Acessar o navegador <br> - Informar o endereço do site https://gymflow-webapp-2025-bwhqdsh7bkgrhpfz.canadacentral-01.azurewebsites.net/Home/Index<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" . O usuário deve clicar em "Meus treinos" -  O usuário deve clicar em "Compartilhar" - O usuário deve escolher o usuário para ser compartilhado e selecionar - O usuário deve clicar em "Enviar".|
 |**Critério de Êxito** | - O compartilhamento foi feito com sucesso.|
 | **Responsável** | `Jefferson Luiz M.` |
 
@@ -57,7 +57,7 @@ Essa abordagem garante não apenas a validação técnica das funcionalidades, m
 | **Caso de Teste** 	| **CT05 – Avaliar treinos**|
 |:---:	|:---:	|
 | **Requisito Associado**| RF-004	- O sistema deve permitir que os usuários avaliem outros treinos.|
-| **Objetivo do Teste**	| Acessar o navegador <br> - Informar o endereço do site tps://www.aquiiremosadicionaraurlquandoforfeita.com.br<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" . O usuário deve clicar em "Explorar"  - O usuário deve clicar em um treino - O usuário deve clicar na quantidade de estrelas para avaliar o treino.|
+| **Objetivo do Teste**	| Acessar o navegador <br> - Informar o endereço do site https://gymflow-webapp-2025-bwhqdsh7bkgrhpfz.canadacentral-01.azurewebsites.net/Home/Index - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" . O usuário deve clicar em "Explorar"  - O usuário deve clicar em um treino - O usuário deve clicar na quantidade de estrelas para avaliar o treino.|
 | **Critério de Êxito** | - A avaliação foi feita com sucesso.|
 | **Responsável** | `Jefferson Luiz M.` |
 
@@ -66,7 +66,7 @@ Essa abordagem garante não apenas a validação técnica das funcionalidades, m
 | **Caso de Teste** | **CT06 – Comentar  treinos**|
 |:---:	|:---:	|
 | **Requisito Associado**| RF-005	- O sistema deve permitir que os usuários comentem outros treinos.|
-| **Objetivo do Teste** 	| Acessar o navegador <br> - Informar o endereço do site tps://www.aquiiremosadicionaraurlquandoforfeita.com.br<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" . O usuário deve clicar em "Explorar"  - O usuário deve clicar em um treino - O usuário deve clicar na caixa de comentário - O usuário deve escrever o comentário na caixa - O usuário deve clicar em enviar.|
+| **Objetivo do Teste** 	| Acessar o navegador <br> - Informar o endereço do site https://gymflow-webapp-2025-bwhqdsh7bkgrhpfz.canadacentral-01.azurewebsites.net/Home/Index - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" . O usuário deve clicar em "Explorar"  - O usuário deve clicar em um treino - O usuário deve clicar na caixa de comentário - O usuário deve escrever o comentário na caixa - O usuário deve clicar em enviar.|
 | **Critério de Êxito** | - O comentário foi feito com sucesso.|
 | **Responsável** | `Jefferson Luiz M.` |
 
